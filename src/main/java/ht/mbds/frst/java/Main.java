@@ -3,10 +3,7 @@ package ht.mbds.frst.java;
 import ht.mbds.frst.java.data.Repository;
 import ht.mbds.frst.java.models.Document;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void afficheDocument(List<Document> documents) {
@@ -45,7 +42,15 @@ public class Main {
             allDocuments.put(doc.getId(), doc);
         }
 
-
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Entrer un ID à rechercher : ");
+        int id = sc.nextInt();
+        if (rechercherParId(allDocuments, id) != null) {
+            System.out.println("Document Trouvé");
+            System.out.println(rechercherParId(allDocuments, id));
+        }else {
+            System.out.println("Document n'existe pas");
+        }
 
     }
 }
