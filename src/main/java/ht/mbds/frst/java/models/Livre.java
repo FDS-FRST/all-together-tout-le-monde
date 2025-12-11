@@ -2,7 +2,10 @@ package ht.mbds.frst.java.models;
 
 import ht.mbds.frst.java.Empruntable;
 
+
 public class Livre extends Document implements Empruntable {
+    private boolean estDisponible;
+
     public Livre(int id, String titre, int anneePublication) {
         super(id, titre, anneePublication);
     }
