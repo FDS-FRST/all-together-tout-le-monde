@@ -45,6 +45,20 @@ public class Repository {
     }
 
 
+    /**
+     * Generates a list of 50 Dvds with random titles.
+     */
+    public static List<Dvd> getDvds() {
+        List<Dvd> dvds = new ArrayList<>(50);
+        for (int i = 1; i <= 50; i++) {
+            String title = randomTitle();
+            int year = 2000 + (i % 26);
+            Dvd dvd = new Dvd(i, title, year);
+            dvds.add(dvd);
+        }
+        return dvds;
+    }
+
     private static String randomTitle() {
         String adj = ADJECTIVES[RNG.nextInt(ADJECTIVES.length)];
         String noun = NOUNS[RNG.nextInt(NOUNS.length)];
