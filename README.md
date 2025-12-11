@@ -20,9 +20,9 @@ On veut pouvoir :
 - Emprunter et retourner des documents.
 ---
 
-## Étape 1 – Classe de base `Document`
+## Étape 1 – Classe de base `ht.mbds.frst.java.models.Document`
 
-1. Crée une classe `Document` avec les attributs privés :
+1. Crée une classe `ht.mbds.frst.java.models.Document` avec les attributs privés :
    - `int id`
    - `String titre`
    - `int anneePublication`
@@ -33,18 +33,18 @@ On veut pouvoir :
    - Une méthode `toString()` qui renvoie :
 
      ```text
-     Document{id=1, titre='Le Seigneur des Anneaux', annee=1954}
+     ht.mbds.frst.java.models.Document{id=1, titre='Le Seigneur des Anneaux', annee=1954}
      ```
 
-3. Dans une classe `Main`, crée quelques objets `Document` et affiche-les.
+3. Dans une classe `ht.mbds.frst.java.Main`, crée quelques objets `ht.mbds.frst.java.models.Document` et affiche-les.
 
 ---
 
-## Étape 2 – Héritage : classes `Livre` et `Dvd`
+## Étape 2 – Héritage : classes `ht.mbds.frst.java.models.Livre` et `ht.mbds.frst.java.models.Dvd`
 
-1. Crée une classe `Livre` qui **étend** `Document`.
-2. Crée une classe `Dvd` qui **étend** `Document`.
-3. Dans `Main`, crée 2–3 livres et 2–3 DVD et affiche-les.
+1. Crée une classe `ht.mbds.frst.java.models.Livre` qui **étend** `ht.mbds.frst.java.models.Document`.
+2. Crée une classe `ht.mbds.frst.java.models.Dvd` qui **étend** `ht.mbds.frst.java.models.Document`.
+3. Dans `ht.mbds.frst.java.Main`, crée 2–3 livres et 2–3 DVD et affiche-les.
 
 ---
 
@@ -58,13 +58,13 @@ On veut pouvoir :
    void retourner();
    ```
 
-2. Fais en sorte que `Livre` l’implémente (et éventuellement `Dvd`).
+2. Fais en sorte que `ht.mbds.frst.java.models.Livre` l’implémente (et éventuellement `ht.mbds.frst.java.models.Dvd`).
 
 ---
 
 ## Étape 4 – Utiliser une `List` pour le catalogue
 
-1. Crée une liste `List<Document> catalogue`.
+1. Crée une liste `List<ht.mbds.frst.java.models.Document> catalogue`.
 2. Ajoute-y tous les documents créés.
 3. Crée une méthode `afficherCatalogue`.
 
@@ -72,7 +72,7 @@ On veut pouvoir :
 
 ## Étape 5 – Utiliser une `Map` pour rechercher par `id`
 
-1. Crée une `Map<Integer, Document>`.
+1. Crée une `Map<Integer, ht.mbds.frst.java.models.Document>`.
 2. Ajoute-y chaque document avec `put(id, document)`.
 3. Crée une méthode `rechercherParId`.
 
@@ -85,12 +85,15 @@ On veut pouvoir :
 3. (Optionnel) Ajoute un menu texte dans `main`.
 
 ### Consignes
-1. Créer une méthode 
+1. Créer une méthode
+
 ```java
+import ht.mbds.frst.java.models.Document;
+
 static void emprunterDocument(Map<Integer, Document> index, int id)
 ```
 - Récupérer le document via la Map.
-- Si le document n’existe pas : afficher "Document introuvable".
+- Si le document n’existe pas : afficher "ht.mbds.frst.java.models.Document introuvable".
 - Sinon
     - Vérifier si le document est une instance de Empruntable :
 ```java 
@@ -102,7 +105,7 @@ static void emprunterDocument(Map<Integer, Document> index, int id)
 }
   ```
  
-2. Créer une méthode similaire retournerDocument(Map<Integer, Document> index, int id) qui permet à un emprunteur de retourner un document préalablement emprunté.
+2. Créer une méthode similaire retournerDocument(Map<Integer, ht.mbds.frst.java.models.Document> index, int id) qui permet à un emprunteur de retourner un document préalablement emprunté.
 
 ## Étape 7 – Implémenter un menu
 Votre menu doit proposer les options suivantes :

@@ -1,12 +1,13 @@
-public class Dvd extends Document {
+package ht.mbds.frst.java.models;
 
-    public Dvd(int id, String titre, int anneePublication) {
+public class Livre extends Document {
+    public Livre(int id, String titre, int anneePublication) {
         super(id, titre, anneePublication);
     }
 
     @Override
     public String toString() {
-        return "Dvd{" +
+        return "Livre{" +
                 "id=" + id +
                 ", titre='" + titre + '\'' +
                 ", anneePublication=" + anneePublication +

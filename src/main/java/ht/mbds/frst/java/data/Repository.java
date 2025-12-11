@@ -1,3 +1,9 @@
+package ht.mbds.frst.java.data;
+
+import ht.mbds.frst.java.models.Document;
+import ht.mbds.frst.java.models.Dvd;
+import ht.mbds.frst.java.models.Livre;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,24 +23,10 @@ public class Repository {
     private static final Random RNG = new Random();
 
     /**
-     * Generates a list of 50 Document instances with random titles.
-     */
-    public static List<Document> getDocuments() {
-        List<Document> docs = new ArrayList<>(50);
-        for (int i = 1; i <= 50; i++) {
-            String title = randomTitle();
-            int year = 2000 + (i % 26);
-            Document d = new Document(i, title, year);
-            docs.add(d);
-        }
-        return docs;
-    }
-
-    /**
      * Generates a list of 50 books instances with random titles.
      */
-    public static List<Livre> getLivres() {
-        List<Livre> livres = new ArrayList<>(50);
+    public static List<Document> getLivres() {
+        List<Document> livres = new ArrayList<>(50);
         for (int i = 1; i <= 50; i++) {
             String title = randomTitle();
             int year = 2000 + (i % 26);
@@ -48,8 +40,8 @@ public class Repository {
     /**
      * Generates a list of 50 Dvds with random titles.
      */
-    public static List<Dvd> getDvds() {
-        List<Dvd> dvds = new ArrayList<>(50);
+    public static List<Document> getDvds() {
+        List<Document> dvds = new ArrayList<>(50);
         for (int i = 1; i <= 50; i++) {
             String title = randomTitle();
             int year = 2000 + (i % 26);
