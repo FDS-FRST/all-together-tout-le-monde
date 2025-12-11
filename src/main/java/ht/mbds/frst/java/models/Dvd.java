@@ -1,6 +1,8 @@
 package ht.mbds.frst.java.models;
 
-public class Dvd extends Document {
+import ht.mbds.frst.java.Empruntable;
+
+public class Dvd extends Document implements Empruntable {
 
     public Dvd(int id, String titre, int anneePublication) {
         super(id, titre, anneePublication);
@@ -13,5 +15,20 @@ public class Dvd extends Document {
                 ", titre='" + titre + '\'' +
                 ", anneePublication=" + anneePublication +
                 '}';
+    }
+
+    @Override
+    public boolean estDisponible() {
+        return false;
+    }
+
+    @Override
+    public void emprunter() {
+
+    }
+
+    @Override
+    public void retourner() {
+
     }
 }
