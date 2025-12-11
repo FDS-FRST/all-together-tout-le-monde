@@ -2,9 +2,9 @@
  * Une classe qui présente un document avec un numéro d'identification, un titre et l'année de publication
  */
 public class Document {
-    private int id;
-    private String titre;
-    private int anneePublication;
+    protected int id;
+    protected String titre;
+    protected int anneePublication;
 
     public Document(int id, String titre, int anneePublication) {
         this.id = id;

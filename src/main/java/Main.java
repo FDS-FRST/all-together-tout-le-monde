@@ -5,5 +5,11 @@ public class Main {
         for (int i = 0; i < Math.min(5, docs.size()); i++) {
             System.out.println(docs.get(i));
         }
+
+        var livres = Repository.getLivres();
+        System.out.println("Total Livres: " + livres.size());
+        for (int i = 0; i < Math.min(5, livres.size()); i++) {
+            System.out.println(livres.get(i));
+        }
     }
 }

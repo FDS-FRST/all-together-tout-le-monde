@@ -30,6 +30,21 @@ public class Repository {
         return docs;
     }
 
+    /**
+     * Generates a list of 50 books instances with random titles.
+     */
+    public static List<Livre> getLivres() {
+        List<Livre> livres = new ArrayList<>(50);
+        for (int i = 1; i <= 50; i++) {
+            String title = randomTitle();
+            int year = 2000 + (i % 26);
+            Livre l = new Livre(i, title, year);
+            livres.add(l);
+        }
+        return livres;
+    }
+
+
     private static String randomTitle() {
         String adj = ADJECTIVES[RNG.nextInt(ADJECTIVES.length)];
         String noun = NOUNS[RNG.nextInt(NOUNS.length)];
