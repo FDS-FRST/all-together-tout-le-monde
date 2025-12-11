@@ -1,7 +1,9 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.printf("Hello and welcome!");
+        var docs = Repository.getDocuments();
+        System.out.println("Total documents: " + docs.size());
+        for (int i = 0; i < Math.min(5, docs.size()); i++) {
+            System.out.println(docs.get(i));
+        }
     }
 }
