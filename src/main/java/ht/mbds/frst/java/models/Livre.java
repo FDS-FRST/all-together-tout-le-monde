@@ -4,7 +4,7 @@ import ht.mbds.frst.java.Empruntable;
 
 
 public class Livre extends Document implements Empruntable {
-    private boolean estDisponible;
+    private boolean estDisponible = true;
 
     public Livre(int id, String titre, int anneePublication) {
         super(id, titre, anneePublication);
@@ -13,9 +13,10 @@ public class Livre extends Document implements Empruntable {
     @Override
     public String toString() {
         return "Livre{" +
-                "id=" + id +
-                ", titre='" + titre + '\'' +
-                ", anneePublication=" + anneePublication +
+                "id=" + getId() +
+                ", titre='" + getTitre() + '\'' +
+                ", anneePublication=" + getAnneePublication() +
+                ", disponible=" + estDisponible +
                 '}';
     }
 
