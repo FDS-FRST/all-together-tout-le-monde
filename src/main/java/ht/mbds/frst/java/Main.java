@@ -1,56 +1,119 @@
 package ht.mbds.frst.java;
 
-import ht.mbds.frst.java.data.Repository;
 import ht.mbds.frst.java.models.Document;
+import ht.mbds.frst.java.models.Dvd;
+import ht.mbds.frst.java.models.Livre;
 
 import java.util.*;
 
-public class Main {
-    public static void afficheDocument(List<Document> documents) {
-        System.out.println("Total: " + documents.size());
-        for (int i = 0; i < Math.min(5, documents.size()); i++) {
-            System.out.println(documents.get(i));
-        }
-    }
+class Main {
 
-    public static void afficheCataloge(List<Document> documents) {
-        afficheDocument(documents);
-    }
-
-    public static Document rechercherParId (Map<Integer, Document> documents, int id) {
-        for (Map.Entry<Integer, Document> entry : documents.entrySet()) {
-            if (entry.getKey() == id) {
-                return entry.getValue();
-            }
-        }
-        return null;
-    }
+    private static List<Document> catalogue = new ArrayList<>();
+    private static Map<Integer, Document> index = new HashMap<>();
 
     public static void main(String[] args) {
-        var livres = Repository.getLivres();
-        afficheDocument(livres);
-        System.out.println();
-        var dvds = Repository.getDvds();
-        afficheDocument(dvds);
+        // Création de quelques documents
+        Livre l1 = new Livre(1, "Le Seigneur des Anneaux", 1954);
+        Livre l2 = new Livre(2, "Harry Potter", 1997);
+        Dvd d1 = new Dvd(3, "Inception", 2010);
+        Dvd d2 = new Dvd(4, "Matrix", 1999);
 
-        List<Document> catalogue = new ArrayList<Document>(livres);
-        catalogue.addAll(dvds);
-        afficheCataloge(catalogue);
+        // Ajout au catalogue
+        ajouterDocument(l1);
+        ajouterDocument(l2);
+        ajouterDocument(d1);
+        ajouterDocument(d2);
 
-        Map<Integer, Document> allDocuments = new HashMap<>();
-        for (Document doc : catalogue) {
-            allDocuments.put(doc.getId(), doc);
-        }
-
+        // Menu
         Scanner sc = new Scanner(System.in);
-        System.out.print("Entrer un ID à rechercher : ");
-        int id = sc.nextInt();
-        if (rechercherParId(allDocuments, id) != null) {
-            System.out.println("Document Trouvé");
-            System.out.println(rechercherParId(allDocuments, id));
-        }else {
-            System.out.println("Document n'existe pas");
-        }
+        int choix;
+        do {
+            System.out.println("\n--- MENU ---");
+            System.out.println("1 - Afficher le catalogue");
+            System.out.println("2 - Rechercher un document par id");
+            System.out.println("3 - Emprunter un document");
+            System.out.println("4 - Retourner un document");
+            System.out.println("5 - Statistiques");
+            System.out.println("0 - Quitter");
+            System.out.print("Votre choix : ");
+            choix = sc.nextInt();
 
+            switch (choix) {
+                case 1 -> afficherCatalogue();
+                case 2 -> {
+                    System.out.print("Entrez l'id : ");
+                    int id = sc.nextInt();
+                    rechercherParId(id);
+                }
+                case 3 -> {
+                    System.out.print("Entrez l'id : ");
+                    int id = sc.nextInt();
+                    emprunterDocument(id);
+                }
+                case 4 -> {
+                    System.out.print("Entrez l'id : ");
+                    int id = sc.nextInt();
+                    retournerDocument(id);
+                }
+                case 5 -> statistiques();
+                case 0 -> System.out.println("Au revoir !");
+                default -> System.out.println("Choix invalide.");
+            }
+        } while (choix != 0);
+    }
+
+    static void ajouterDocument(Document doc) {
+        catalogue.add(doc);
+        index.put(doc.getId(), doc);
+    }
+
+    static void afficherCatalogue() {
+        System.out.println("\nCatalogue :");
+        for (Document doc : catalogue) {
+            System.out.println(doc);
+        }
+    }
+
+    static void rechercherParId(int id) {
+        Document doc = index.get(id);
+        if (doc == null) {
+            System.out.println("ht.mbds.frst.java.models.Document introuvable");
+        } else {
+            System.out.println("Trouvé : " + doc);
+        }
+    }
+
+    static void emprunterDocument(int id) {
+        Document doc = index.get(id);
+        if (doc == null) {
+            System.out.println("ht.mbds.frst.java.models.Document introuvable");
+        } else if (doc instanceof Empruntable e) {
+            e.emprunter();
+        } else {
+            System.out.println("Ce document ne peut pas être emprunté.");
+        }
+    }
+
+    static void retournerDocument(int id) {
+        Document doc = index.get(id);
+        if (doc == null) {
+            System.out.println("ht.mbds.frst.java.models.Document introuvable");
+        } else if (doc instanceof Empruntable e) {
+            e.retourner();
+        } else {
+            System.out.println("Ce document ne peut pas être retourné.");
+        }
+    }
+
+    static void statistiques() {
+        int dispo = 0, empruntes = 0;
+        for (Document doc : catalogue) {
+            if (doc instanceof Empruntable e) {
+                if (e.estDisponible()) dispo++;
+                else empruntes++;
+            }
+        }
+        System.out.println("Documents disponibles : " + dispo);
+        System.out.println("Documents empruntés : " + empruntes);
     }
 }
