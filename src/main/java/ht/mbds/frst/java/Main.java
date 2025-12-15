@@ -24,18 +24,26 @@ class Main {
         ajouterDocument(d1);
         ajouterDocument(d2);
 
+        menu();
+    }
+
+    static void menuItems() {
+        System.out.println("\n--- MENU ---");
+        System.out.println("1 - Afficher le catalogue");
+        System.out.println("2 - Rechercher un document par id");
+        System.out.println("3 - Emprunter un document");
+        System.out.println("4 - Retourner un document");
+        System.out.println("5 - Statistiques");
+        System.out.println("0 - Quitter");
+        System.out.print("Votre choix : ");
+    }
+
+    static void menu() {
         // Menu
         Scanner sc = new Scanner(System.in);
         int choix;
         do {
-            System.out.println("\n--- MENU ---");
-            System.out.println("1 - Afficher le catalogue");
-            System.out.println("2 - Rechercher un document par id");
-            System.out.println("3 - Emprunter un document");
-            System.out.println("4 - Retourner un document");
-            System.out.println("5 - Statistiques");
-            System.out.println("0 - Quitter");
-            System.out.print("Votre choix : ");
+            menuItems();
             choix = sc.nextInt();
 
             switch (choix) {
