@@ -53,7 +53,7 @@ class Main {
                 case 4 -> {
                     System.out.print("Entrez l'id : ");
                     int id = sc.nextInt();
-                    retournerDocument(id);
+                    searchDocument(id);
                 }
                 case 5 -> statistiques();
                 case 0 -> System.out.println("Au revoir !");
@@ -94,7 +94,7 @@ class Main {
         }
     }
 
-    static void retournerDocument(int id) {
+    static void searchDocument(int id) {
         Document doc = index.get(id);
         if (doc == null) {
             System.out.println("ht.mbds.frst.java.models.Document introuvable");
