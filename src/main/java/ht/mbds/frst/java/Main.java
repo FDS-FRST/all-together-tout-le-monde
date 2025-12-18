@@ -26,6 +26,11 @@ class Main {
 
         menu();
     }
+    //Ajout de la methode Pause, qui permet de faire une pause après chaque operation du menu
+    static void pause(Scanner sc) {
+        System.out.println("\nAppuyez sur la touche Enter du clavier pour continuer...");
+        sc.nextLine();
+    }
 
     static void menuItems() {
         System.out.println("\n--- MENU ---");
@@ -45,27 +50,42 @@ class Main {
         do {
             menuItems();
             choix = sc.nextInt();
-
+            sc.nextLine(); //  vider le buffer
             switch (choix) {
-                case 1 -> afficherCatalogue();
+                case 1 -> {
+                    afficherCatalogue();
+                    pause(sc); // mets une pause
+                }
                 case 2 -> {
                     System.out.print("Entrez l'id : ");
                     int id = sc.nextInt();
+                   sc.nextLine(); //  vider le buffer
                     rechercherParId(id);
+                    pause(sc);
                 }
                 case 3 -> {
                     System.out.print("Entrez l'id : ");
                     int id = sc.nextInt();
+                    sc.nextLine(); //Vider le buffer
                     emprunterDocument(id);
+                    pause(sc);
                 }
                 case 4 -> {
                     System.out.print("Entrez l'id : ");
                     int id = sc.nextInt();
+                    sc.nextLine(); //Vider le buffer
                     retournerDocument(id);
+                    pause(sc);
                 }
-                case 5 -> statistiques();
+                case 5 -> {
+                    statistiques();
+                    pause(sc);
+                }
                 case 0 -> System.out.println("Au revoir !");
-                default -> System.out.println("Choix invalide.");
+                default -> {
+                    System.out.println("Choix invalide.");
+                    pause(sc);
+                }
             }
         } while (choix != 0);
     }
